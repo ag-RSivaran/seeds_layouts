@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\seeds_layouts\Plugin\LayoutFieldBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\file\Entity\File;
 
 /**
  * Provides a 'background_image' field.
@@ -64,6 +65,13 @@ class BackgroundImageField extends LayoutFieldBase implements ContainerFactoryPl
     $attributes = [];
     /** @var \Drupal\file\FileInterface $file */
     $file_value = !empty($this->getConfiguration('file')) ? $this->getConfiguration('file') : [];
+	
+	if (isset($file_value[0]) && !empty($file_value[0])) {
+      $file_perm = File::load($file_value[0]);
+      $file_perm->setPermanent();
+      $file_perm->save();
+    }
+	
     $file = $this->entityTypeManagar->getStorage('file')->load(reset($file_value));
     $uri = "";
 
