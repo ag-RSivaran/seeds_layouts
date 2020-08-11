@@ -1,0 +1,17 @@
+seeds_layouts.config:
+  route_name: seeds_layouts.config
+  title: "Settings"
+  base_route: seeds_layouts.config
+  weight: 1
+
+seeds_layouts.columns:
+  route_name: seeds_layouts.columns
+  title: "Columns"
+  base_route: seeds_layouts.config
+  weight: 2
+
+seeds_layouts.import:
+  route_name: seeds_layouts.import
+  title: "Import"
+  base_route: seeds_layouts.config
+  weight: 3

@@ -1,0 +1,6 @@
+seeds_layouts.config:
+  title: "Seeds Layouts"
+  route_name: seeds_layouts.config
+  description: "Configuration for Seeds Layouts"
+  parent: system.admin_config_ui
+  weight: 99

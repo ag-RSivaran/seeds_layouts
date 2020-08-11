@@ -1,0 +1,36 @@
+seeds_1col:
+  label: One Column
+  category: Seeds
+  class: '\Drupal\seeds_layouts\Plugin\SeedsLayout'
+  type: partial
+  template: templates/seeds-1col
+  icon: 'assets/images/seeds_1col.png'
+  regions:
+    content:
+      label: Content
+seeds_2col:
+  label: Two Columns
+  category: Seeds
+  class: '\Drupal\seeds_layouts\Plugin\SeedsLayout'
+  type: partial
+  template: templates/seeds-2col
+  icon: 'assets/images/seeds_2col.png'
+  regions:
+    left:
+      label: Left
+    right:
+      label: Right
+seeds_3col:
+  label: Three Columns
+  category: Seeds
+  class: '\Drupal\seeds_layouts\Plugin\SeedsLayout'
+  type: partial
+  template: templates/seeds-3col
+  icon: 'assets/images/seeds_3col.png'
+  regions:
+    left:
+      label: Left
+    center:
+      label: Center
+    right:
+      label: Right

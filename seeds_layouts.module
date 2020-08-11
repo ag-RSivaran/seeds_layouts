@@ -1,0 +1,137 @@
+<?php
+
+/**
+ * @file
+ * Contains seeds_layouts.module.
+ */
+
+use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_help().
+ */
+function seeds_layouts_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.seeds_layouts':
+      /* @todo Create a help page */
+      $output = [];
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function seeds_layouts_theme($existing, $type, $theme, $path) {
+  $templates = [];
+  $templates['seeds_container'] = [];
+  return $templates;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function seeds_layouts_preprocess_layout(&$variables) {
+  $hook = $variables["theme_hook_original"];
+  // Check if this layout belongs to seeds layouts.
+  if (preg_match('/seeds_\dcol/', $hook)) {
+    /** @var \Drupal\seeds_layouts\SeedsLayoutsManager $seeds_layouts_manager */
+    // Initializing settings and variables.
+    $seeds_layouts_manager = \Drupal::service('seeds_layouts.manager');
+    $attached_libraries = [];
+    $regions = $variables['layout']->getRegions();
+    $layout_settings = $variables['settings'];
+    $config = \Drupal::config('seeds_layouts.config');
+    // Looping through the region.
+    foreach ($regions as $region => $name) {
+      $reverse = $layout_settings["reverse"];
+      $active_region = $region;
+      // Get the classes list of the current region.
+      // Reverse the attributes if it is checked.
+      if ($reverse) {
+        switch ($region) {
+          case 'left':
+            $active_region = 'right';
+            break;
+
+          case 'right':
+            $active_region = 'left';
+            break;
+        }
+      }
+
+      $classes = [];
+      if (isset($layout_settings[$active_region . '_column'])) {
+        $classes = $layout_settings[$active_region . '_column'];
+      }
+
+      // We check if there are default attributes set up before. If there is, we
+      // take these attributes. This is important if we want to enable
+      // drag and drop functionalities for layout builder.
+      $default_attributes = isset($variables['region_attributes'][$region]) ? $variables['region_attributes'][$region]->toArray() : [];
+
+      // Check if there are custom attributes for this
+      // region and set it up accordingly.
+      // Note: custom attributes always override the classes list.
+      if ($attributes = $layout_settings[$active_region . '_attributes']) {
+        $attributes = $seeds_layouts_manager->attributesStringToArray($attributes);
+        $region_attributes['class'] = NestedArray::mergeDeep($classes, $attributes['class']);
+      }
+      else {
+        // Remove any duplicate classes.
+        $optimized_classes = [];
+        foreach ($classes as $sub_classes) {
+          $sub_classes = explode(" ", $sub_classes);
+          $optimized_classes = $sub_classes ? NestedArray::mergeDeep($optimized_classes, $sub_classes) : $optimized_classes;
+        }
+        $optimized_classes = array_unique($optimized_classes);
+        $region_attributes = ['class' => $optimized_classes];
+      }
+      // We merge our region attributes with the default ones.
+      $all_attributes = NestedArray::mergeDeepArray([$region_attributes, $default_attributes]);
+
+      // Set it up as a twig variable.
+      $variables[$region . '_attributes'] = new Attribute($all_attributes);
+    }
+
+    // Set section attributes.
+    // Get the section and columns parent attributes and convert them
+    // from a string to an array.
+    $parsed_section_attributes = $seeds_layouts_manager->attributesStringToArray($layout_settings['section_attributes']);
+    $parsed_columns_parent_attributes = $seeds_layouts_manager->attributesStringToArray($layout_settings['columns_parent_attributes']);
+
+    /*
+     * Get the attributes form LayoutField plugins
+     *
+     * @see \Drupal\seeds_layouts\Plugin\LayoutFieldInterface
+     */
+    $custom_attributes = $layout_settings['layout_fields_attributes'];
+
+    // Load all custom attached libraries.
+    /** @var \Drupal\seeds_layouts\Plugin\LayoutFieldManager $layout_field_manager */
+    $layout_field_manager = \Drupal::service('plugin.manager.layout_field');
+    $custom_fields = $layout_field_manager->getDefinitions();
+    foreach ($custom_fields as $custom_field) {
+      /** @var \Drupal\seeds_layouts\Plugin\LayoutFieldInterface $instance */
+      $instance = $layout_field_manager->createInstance($custom_field['id']);
+      $attached_libraries = NestedArray::mergeDeep($attached_libraries, $instance->getLibraries());
+    }
+
+    // Default section attributes.
+    $default_section_attributes = $variables['attributes'];
+    // We merge our section attributes with the default ones.
+    $variables['section_attributes'] = new Attribute(NestedArray::mergeDeepArray([
+      $parsed_section_attributes,
+      $custom_attributes,
+      $default_section_attributes,
+    ]));
+    // Setup columns parent attributes.
+    $variables['columns_parent_attributes'] = new Attribute($parsed_columns_parent_attributes);
+    // Setup container variables.
+    $variables['container'] = $layout_settings['container'] ? $config->get('container_class') : "no-container";
+    $variables['container_has_framework'] = $config->get('framework_has_container');
+    $variables['#attached']['library'] = $attached_libraries;
+  }
+}

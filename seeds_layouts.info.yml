@@ -1,0 +1,13 @@
+name: Seeds Layouts
+type: module
+description: Provides layouts for all frameworks, with an eye on Layout Builder to provide optimized user experience.
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: Layouts
+configure: seeds_layouts.config
+dependencies:
+  - drupal:layout_discovery
+# Information added by Drupal.org packaging script on 2020-08-04
+version: '8.x-1.1'
+project: 'seeds_layouts'
+datestamp: 1596539259

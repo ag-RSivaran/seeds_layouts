@@ -1,0 +1,5 @@
+columns_parent_attributes: class|row
+layout_fields: []
+framework_has_container: TRUE
+container_class: "container"
+one_column_attributes: class|col-12

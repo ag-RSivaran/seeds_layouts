@@ -1,0 +1,55 @@
+.button.bg-danger {
+  background-color: red !important;
+}
+.form-button {
+  border: none !important;
+  margin: 0 !important;
+  margin-bottom: 15px !important;
+  margin-top: 15px !important;
+}
+
+.layout-builder-configure-section img {
+  max-width: 100%;
+  background-color: transparent !important;
+}
+
+.layout-builder-configure-section .fieldset-wrapper .radio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.layout-builder-configure-section .fieldset-wrapper .js-form-type-radio:not(label) {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+.layout-builder-configure-section .fieldset-wrapper input[type="radio"] {
+  display: none !important;
+}
+.layout-builder-configure-section .fieldset-wrapper .form-check {
+  margin-bottom: 0 !important;
+}
+
+.layout-builder-configure-section .form-composite legend {
+  text-align: center;
+  font-weight: bold;
+}
+
+.layout-builder-configure-section .fieldset-wrapper input[type="radio"] + label {
+  transition: 0.3s;
+  text-align: center;
+  background-color: transparent !important;
+}
+
+.layout-builder-configure-section .selectedStyle,
+.layout-builder-configure-section .fieldset-wrapper input[type="radio"]:checked + label {
+  border: 2px solid #38d42d !important;
+}
+
+.layout-builder-configure-section .fieldset-wrapper input[type="radio"]:hover + label {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.layout-builder-configure-section .radio >.radio {
+  margin: 2px 0 !important;
+}

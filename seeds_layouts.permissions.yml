@@ -1,0 +1,5 @@
+administer seeds layouts:
+  title: "Administer Seeds Layouts"
+  restrict access: true
+access advanced seeds layouts settings:
+  title: "Access advanced settings on layout"

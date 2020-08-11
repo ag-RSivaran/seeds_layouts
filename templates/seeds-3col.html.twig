@@ -1,0 +1,15 @@
+{% extends "seeds-container.html.twig" %}
+
+{% block content %}
+	<div {{columns_parent_attributes}}>
+		<div {{left_attributes}}>
+			{{ content.left }}
+		</div>
+		<div {{center_attributes}}>
+			{{ content.center }}
+		</div>
+		<div {{right_attributes}}>
+			{{ content.right }}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<section {{section_attributes.addClass('clearfix','seeds-section',additional_classes) }}>
+	{{ title_suffix.contextual_links }}
+	{% if container_has_framework %}
+		<div class={{container?container:"no-container"}}>
+		{% endif %}
+		{% block content %}{% endblock %}
+		{% if container_has_framework %}
+		</div>
+	{% endif %}
+</section>

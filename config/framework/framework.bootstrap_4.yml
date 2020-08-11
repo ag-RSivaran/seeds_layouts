@@ -1,0 +1,208 @@
+id: bootstrap_4
+label: Bootstrap 4
+themes:
+  - bootstrap_barrio
+columns_parent_attributes: class|row
+layout_fields: []
+framework_has_container: TRUE
+container_class: "container"
+one_column_attributes: class|col-12
+columns:
+  3b4ef7d0-c37b-4786-8b0c-fb26473ae688:
+    description:
+      type: seeds_2col
+      label: "Full Width"
+      size: tablet
+    image_url: "{$module_path}/assets/images/100_100.png"
+    classes:
+      left: col-sm-12
+      right: col-sm-12
+  58061478-f66a-49a0-9643-f9495ed095a3:
+    description:
+      type: seeds_2col
+      label: "Full Width"
+      size: mobile
+    image_url: "{$module_path}/assets/images/100_100.png"
+    classes:
+      left: col-12
+      right: col-12
+  8d63ef68-6bc3-418c-a1a7-9872755dc64e:
+    description:
+      type: seeds_3col
+      label: "Full Width"
+      size: desktop
+    classes:
+      left: col-md-12
+      middle: col-md-12
+      right: col-md-12
+    image_url: "{$module_path}/assets/images/100_100_100.png"
+  8d63ef68-6bc3-418c-a1a7-9872755ac64e:
+    description:
+      type: seeds_3col
+      label: "Full Width"
+      size: tablet
+    classes:
+      left: col-sm-12
+      middle: col-sm-12
+      right: col-sm-12
+    image_url: "{$module_path}/assets/images/100_100_100.png"
+  8d63ef68-6bc3-424c-a1a7-9872755ac64e:
+    description:
+      type: seeds_3col
+      label: "Full Width"
+      size: mobile
+    classes:
+      left: col-12
+      middle: col-12
+      right: col-12
+    image_url: "{$module_path}/assets/images/100_100_100.png"
+  e37be410-54bf-4083-83d4-2acb367bad24:
+    description:
+      type: seeds_2col
+      size: desktop
+      label: "Full Width"
+    classes:
+      left: col-md-12
+      right: col-md-12
+    image_url: "{$module_path}/assets/images/100_100.png"
+  f8c3ab37-db04-4e92-b5b0-8aad6dfa1b94:
+    description:
+      type: seeds_2col
+      size: tablet
+      label: "50% 50%"
+    classes:
+      left: col-sm-6
+      right: col-sm-6
+    image_url: "{$module_path}/assets/images/50_50.png"
+  e37be410-54bf-4083-83d4-2acb367bad44:
+    description:
+      type: seeds_2col
+      size: mobile
+      label: "Full Width"
+    classes:
+      left: col-12
+      right: col-12
+    image_url: "{$module_path}/assets/images/100_100.png"
+  f8c3ab37-db04-4e92-b5b0-8aad6df21b94:
+    description:
+      type: seeds_2col
+      size: desktop
+      label: "50% 50%"
+    classes:
+      left: col-md-6
+      right: col-md-6
+    image_url: "{$module_path}/assets/images/50_50.png"
+  f602f4df-a9a4-4008-84ad-87b233ebd883:
+    description:
+      type: seeds_2col
+      size: tablet
+      label: "50% 50%"
+    classes:
+      left: col-sm-6
+      right: col-sm-6
+    image_url: "{$module_path}/assets/images/50_50.png"
+  9929bd16-a981-420e-b36a-aefdcd45e569:
+    description:
+      type: seeds_2col
+      size: mobile
+      label: "50% 50%"
+    classes:
+      left: col-6
+      right: col-6
+    image_url: "{$module_path}/assets/images/50_50.png"
+  414335af-787d-40bb-93eb-39a75c5ba92e:
+    description:
+      type: seeds_2col
+      size: desktop
+      label: "33% 66%"
+    classes:
+      left: col-md-4
+      right: col-md-8
+    image_url: "{$module_path}/assets/images/33_66.png"
+  a5804d97-4416-4866-ba16-c8e288bdfc50:
+    description:
+      type: seeds_2col
+      size: tablet
+      label: "33% 66%"
+    classes:
+      left: col-sm-4
+      right: col-sm-8
+    image_url: "{$module_path}/assets/images/33_66.png"
+  c0d5625b-8f86-4d6e-9bea-f70bde1122b7:
+    description:
+      type: seeds_2col
+      size: desktop
+      label: "25% 75%"
+    classes:
+      left: col-md-3
+      right: col-md-9
+    image_url: "{$module_path}/assets/images/25_75.png"
+  ca6350cf-afbb-43cb-8848-faed5638394b:
+    description:
+      type: seeds_2col
+      size: tablet
+      label: "25% 75%"
+    classes:
+      left: col-sm-3
+      right: col-sm-9
+    image_url: "{$module_path}/assets/images/25_75.png"
+  33c3c904-03bf-4f44-9d9c-e576a47a7cc2:
+    description:
+      type: seeds_3col
+      size: desktop
+      label: "33% 33% 33%"
+    classes:
+      left: col-md-4
+      middle: col-md-4
+      right: col-md-4
+    image_url: "{$module_path}/assets/images/33_33_33.png"
+  58ff72e6-6af0-4937-86b1-632bcdf7bdf2:
+    description:
+      type: seeds_3col
+      size: tablet
+      label: "33% 33% 33%"
+    classes:
+      left: col-sm-4
+      middle: col-sm-4
+      right: col-sm-4
+    image_url: "{$module_path}/assets/images/33_33_33.png"
+  d127a8a8-d597-4243-9378-a2d09fadafa7:
+    description:
+      type: seeds_3col
+      size: mobile
+      label: "33% 33% 33%"
+    classes:
+      left: col-4
+      middle: col-4
+      right: col-4
+    image_url: "{$module_path}/assets/images/33_33_33.png"
+  cb6d6218-9059-4520-8184-163abab6ba23:
+    description:
+      type: seeds_3col
+      size: desktop
+      label: "25% 25% 50%"
+    classes:
+      left: col-md-6
+      middle: col-md-3
+      right: col-md-3
+    image_url: "{$module_path}/assets/images/25_25_50.png"
+  80907fe0-0067-4869-bbb8-f59ef11acfa6:
+    description:
+      type: seeds_3col
+      size: tablet
+      label: "25% 25% 50%"
+    classes:
+      left: col-sm-6
+      middle: col-sm-3
+      right: col-sm-3
+    image_url: "{$module_path}/assets/images/25_25_50.png"
+  e8aae25f-077d-4036-8156-8c7e1089d92a:
+    description:
+      type: seeds_3col
+      size: mobile
+      label: "25% 25% 50%"
+    classes:
+      left: col-6
+      middle: col-3
+      right: col-3
+    image_url: "{$module_path}/assets/images/25_25_50.png"

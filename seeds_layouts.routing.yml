@@ -1,0 +1,26 @@
+seeds_layouts.config:
+  path: '/admin/config/content/seeds_layouts'
+  defaults:
+    _form: '\Drupal\seeds_layouts\Form\SeedsLayoutsConfigForm'
+    _title: 'Seeds Layouts Settings'
+  requirements:
+    _permission: 'administer seeds layouts'
+  options:
+    _admin_route: TRUE
+seeds_layouts.import:
+  path: '/admin/config/content/seeds_layouts/import'
+  defaults:
+    _form: '\Drupal\seeds_layouts\Form\FrameworkImportForm'
+    _title: 'Import a Framework'
+  requirements:
+    _permission: 'administer seeds layouts'
+
+seeds_layouts.columns:
+  path: '/admin/config/content/seeds_layouts/columns'
+  defaults:
+    _form: '\Drupal\seeds_layouts\Form\ColumnsForm'
+    _title: 'Add Columns'
+  requirements:
+    _permission: 'administer seeds layouts'
+  options:
+    _admin_route: TRUE

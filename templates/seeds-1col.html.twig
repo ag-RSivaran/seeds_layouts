@@ -1,0 +1,13 @@
+
+
+{% extends "seeds-container.html.twig" %}
+
+{% set additional_classes = 'seeds-1col' %}
+
+{% block content %}
+	<div {{columns_parent_attributes}}>
+		<div {{content_attributes}}>
+			{{ content }}
+		</div>
+	</div>
+{% endblock %}

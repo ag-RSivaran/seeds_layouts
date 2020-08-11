@@ -1,0 +1,9 @@
+services:
+  # Contains helper functions for Seeds Layout.
+  seeds_layouts.manager:
+    class: Drupal\seeds_layouts\SeedsLayoutsManager
+    arguments: ["@entity_type.manager", "@config.factory", "@uuid"]
+  # The plugin manager service to manage LayoutFields
+  plugin.manager.layout_field:
+    class: Drupal\seeds_layouts\Plugin\LayoutFieldManager
+    parent: default_plugin_manager

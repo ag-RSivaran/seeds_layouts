@@ -1,0 +1,16 @@
+layout_settings:
+  css:
+    theme:
+      assets/css/layout-settings.css: {}
+  js:
+    assets/js/seeds_layouts.js: {}
+  dependencies:
+    - core/jquery.once
+parallax:
+  css:
+    component:
+      assets/css/parallax.css: {}
+module_config:
+  css:
+    component:
+      assets/css/module-config.css: {}

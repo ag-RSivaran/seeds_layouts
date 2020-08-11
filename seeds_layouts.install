@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Contains seeds_layouts.install.
+ */
+
+use Drupal\Core\Config\FileStorage;
+
+/**
+ * Implements hook_install().
+ */
+function seeds_layouts_install() {
+  // Set the weight to be after layout_discovery module.
+  module_set_weight('seeds_layouts', 2);
+
+  /** @var \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler */
+  $theme_handler = \Drupal::service('theme_handler');
+  $themes = array_keys($theme_handler->listInfo());
+
+  // File source.
+  $frameworks_config_path = drupal_get_path('module', 'seeds_layouts') . '/config/framework';
+  $framework_source = new FileStorage($frameworks_config_path);
+
+  // Get all framworks in '/config/framework' folder.
+  $frameworks = $framework_source->listAll('framework');
+  try {
+    foreach ($themes as $theme_name) {
+      foreach ($frameworks as $framework_yml) {
+        /** @var array $framework_config */
+        if (!($framework_config = $framework_source->read($framework_yml))) {
+          \Drupal::messenger()->addError(sprintf("Can't access '%s', file not found or permission denied.", [$framework_yml]));
+          return;
+        }
+
+        if (in_array($theme_name, $framework_config['themes'])) {
+          \Drupal::service('seeds_layouts.manager')->importFramework($framework_config['id']);
+          return;
+        }
+      }
+    }
+  }
+  catch (FrameworkImportException $e) {
+    \Drupal::messenger()->addError($e->getMessage());
+  }
+}
